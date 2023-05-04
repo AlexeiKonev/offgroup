@@ -15,17 +15,14 @@ try {
 
 
 
-$customer_id = $_GET['id'];
+$id = $_GET['id'];
 
 
 
-// Получение данных из таблицы customers
-$sqlCustomer = "SELECT * FROM customers WHERE customer_id =".$customer_id ." LIMIT 1";
-$stmtCustomer = $pdo->query($sqlCustomer);
-$customers = $stmtCustomer->fetchAll(PDO::FETCH_ASSOC);
+
 
 // Получение данных из таблицы orders
-$sqlOrder = "SELECT * FROM orders WHERE customer_id =".$customer_id." LIMIT 1";;
+$sqlOrder = "SELECT * FROM orders WHERE id =".$id;;
 $stmtOrder = $pdo->query($sqlOrder);
 $orders = $stmtOrder->fetchAll(PDO::FETCH_ASSOC);
 
