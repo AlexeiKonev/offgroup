@@ -58,7 +58,18 @@ $sql = "SELECT * FROM customers WHERE customer_id = " . $customer_id;
 </head>
 <body>
 <table>
+    <tr><th>ID</th><th>Имя</th><th>Контакты</th></tr>
+    <?php
+    foreach ($customers as $customer): ?>
+        <tr>
+            <td><?=$customer['id']?></td>
+            <td><?=$customer['customer_id'] ?></td>
+            <td><?=$customer['name'] ?></td>
+            <td><?=$customer['email'] ?></td>
 
+
+        </tr>
+    <?php endforeach; ?>
 </table>
 <table>
     <tr><th>ID</th><th>Покупатель</th><th>Описание</th><th>Общая стоимость</th><th>Оплачено</th><th>Действия</th></tr>

@@ -32,9 +32,39 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
-<form action="d/create-order.php"><input type="text" name="create-order" id="">
+<form action="d/create-order.php">
+    <input type="text" name="" >
+    <input type="submit" ></form><label for="customerID">customerID</label>
+<select id="customerID" name="customer_id">
 
-    <input type="submit" value=""></form>
+    <option value=”1”>1</option>
+
+    <option value=”2”>2</option>
+
+</select>
+<label for="descriptionID">description</label>
+<select id="descriptionID" name="">
+
+    <option value=”iphoneX”>iphoneX</option>
+
+    <option value=”iphone”>iphone</option>
+
+    <option value=”android”>android</option>
+
+    <option value=”ipad”>ipad</option>
+
+</select> <select id="selectID" name="">
+
+    <option value=”iphoneX”>iphoneX</option>
+
+    <option value=”iphone”>iphone</option>
+
+    <option value=”android”>android</option>
+
+    <option value=”ipad”>ipad</option>
+
+</select> <label for="total_cost">Стоимость</label><input type="text" name="total_cost" id="total_cost">
+<label for="paid">Оплачено</label><input type="text" name="paid" id="paid">
 
 <table>
     <tr>
