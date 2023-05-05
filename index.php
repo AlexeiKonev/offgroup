@@ -1,18 +1,25 @@
 <?php
 
+require_once 'DataBase.php';
 
 $host = "localhost";
 $db_name = "off_group";
 $username = "user";
 $password = "root";
 
-try {
+$db = new DataBase($host,$db_name,$username,$password);
+$pdo = $db->getPdo();
 
-    $pdo = new PDO("mysql:host=" . $host . ";dbname=" . $db_name, $username, $password);
+//try {
+//
+//    $pdo = new PDO("mysql:host=" . $host . ";dbname=" . $db_name, $username, $password);
+//
+//} catch (PDOException $e) {
+//    die("Ошибка подключения к базе данных: " . $e->getMessage());
+//}
 
-} catch (PDOException $e) {
-    die("Ошибка подключения к базе данных: " . $e->getMessage());
-}
+
+
 
 // Получение данных из таблицы orders
 $sql = "SELECT * FROM orders";
@@ -33,8 +40,8 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
 <form action="create-order.php" method="post">
-    <input type="text" name="" >
-    <label for="customer_id">description</label>
+    <table></table>
+    <label for="customerID">customerID</label>
 <select id="customer_id" name="customer_id">
 
     <option value="1">1</option>
@@ -45,17 +52,17 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <label for="descriptionID">description</label>
 <select id="descriptionID" name="description">
 
-    <option value=”iphoneX”>iphoneX</option>
+    <option value="iphoneX">iphoneX</option>
 
-    <option value=”iphone”>iphone</option>
+    <option value="iphone">iphone</option>
 
-    <option value=”android”>android</option>
+    <option value="android">android</option>
 
-    <option value=”ipad”>ipad</option>
+    <option value="ipad">ipad</option>
 
 </select>  <label for="total_cost">Стоимость</label><input type="text" name="total_cost" id="total_cost">
 <label for="paid">Оплачено</label><input type="text" name="paid" id="paid">
-    <input type="submit" ><label for="customerID">customerID</label>
+    <input type="submit" >
 </form>
 <table>
     <tr>

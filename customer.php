@@ -1,28 +1,22 @@
 <?php
+require_once 'DataBase.php';
 
 $host = "localhost";
 $db_name = "off_group";
 $username = "user";
 $password = "root";
-try {
-    $pdo = new PDO("mysql:host=" . $host . ";dbname=" . $db_name, $username, $password);
-//    $pdo = new PDO("mysql:host=".$host.";dbname=".$dbname, $username, $password);
-} catch (PDOException $e) {
-    die("Ошибка подключения к базе данных: " . $e->getMessage());
-}
+
+$db = new DataBase($host,$db_name,$username,$password);
+$pdo = $db->getPdo();
 
 // Получаем значение параметра customer_id из запроса
 $customer_id = $_GET["customer_id"];
-var_dump($customer_id);
+
 
 // Получение данных из таблицы customers
 $sqlCustomer = "SELECT * FROM customers WHERE customer_id =".$customer_id ;
 $stmtCustomer = $pdo->query($sqlCustomer);
 $customers = $stmtCustomer->fetchAll(PDO::FETCH_ASSOC);
-
-
-
-
 
 // Получение данных из таблицы customers
 $sqlCustomer = "SELECT * FROM customers WHERE customer_id =".$customer_id ;
@@ -37,12 +31,6 @@ $orders = $stmtOrder->fetchAll(PDO::FETCH_ASSOC);
 
 // Формируем SQL-запрос для выборки данных из таблицы customers
 $sql = "SELECT * FROM customers WHERE customer_id = " . $customer_id;
-
-
-
-
-// Выводим данные на экран
-
 
 
 ?>

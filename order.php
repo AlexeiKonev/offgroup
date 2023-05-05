@@ -1,17 +1,22 @@
 <?php
 //require_once "./ordertable_row.php";
+require_once 'DataBase.php';
 
 
 $host = "localhost";
 $db_name = "off_group";
 $username = "user";
 $password = "root";
-try {
-    $pdo = new PDO("mysql:host=" . $host . ";dbname=" . $db_name, $username, $password);
-//    $pdo = new PDO("mysql:host=".$host.";dbname=".$dbname, $username, $password);
-} catch (PDOException $e) {
-    die("Ошибка подключения к базе данных: " . $e->getMessage());
-}
+
+$db = new DataBase($host,$db_name,$username,$password);
+$pdo = $db->getPdo();
+
+//try {
+//    $pdo = new PDO("mysql:host=" . $host . ";dbname=" . $db_name, $username, $password);
+////    $pdo = new PDO("mysql:host=".$host.";dbname=".$dbname, $username, $password);
+//} catch (PDOException $e) {
+//    die("Ошибка подключения к базе данных: " . $e->getMessage());
+//}
 
 
 

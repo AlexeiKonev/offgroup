@@ -1,14 +1,14 @@
 <?php
+require_once 'DataBase.php';
+
 // Подключение к базе данных
 $host = "localhost";
 $db_name = "off_group";
 $username = "user";
 $password = "root";
-try {
-    $pdo = new PDO("mysql:host=" . $host . ";dbname=" . $db_name, $username, $password);
-} catch (PDOException $e) {
-    die("Ошибка подключения к базе данных: " . $e->getMessage());
-}
+
+$db = new DataBase($host,$db_name,$username,$password);
+$pdo = $db->getPdo();
 
 // Получение данных из формы
 $customer_id = $_POST['customer_id'];

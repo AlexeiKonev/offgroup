@@ -1,5 +1,5 @@
 <?php
-require_once 'db.php';
+require_once 'DataBase.php';
 
 //$db = new db('localhost','user','root','off_group');
 // Подключение к базе данных
