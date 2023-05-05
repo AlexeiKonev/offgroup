@@ -35,9 +35,9 @@ $orders = $stmtOrder->fetchAll(PDO::FETCH_ASSOC);
     <label for="customerID">customerID</label>
 <select id="customer_id" name="customer_id">
 
-    <option value="1">1</option>
+    <option value="1">Vasia</option>
 
-    <option value="2">2</option>
+    <option value="2">Petr</option>
 
 </select>
 <label for="descriptionID">описание</label>
@@ -74,7 +74,7 @@ $orders = $stmtOrder->fetchAll(PDO::FETCH_ASSOC);
             <td><?= $order['description'] ?></td>
             <td><?= $order['total_cost'] ?></td>
             <td><?= $order['paid'] ?></td>
-            <td><?= $order['not_paid'] ?></td>
+            <td><?= round($order['total_cost'] -$order['paid'])   ?></td>
             <td>
                 <form method="get">
                     <a href='order.php?id=<?= $order['id'] ?>'>

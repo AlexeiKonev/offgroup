@@ -44,15 +44,15 @@ if (!empty($errors)) {
     echo '</ul>';
 } else {
     // Добавление данных в базу данных
-    $sql = "INSERT INTO orders (customer_id, description, total_cost, paid, not_paid)
-            VALUES (:customer_id, :description, :total_cost, :paid, :not_paid)";
+    $sql = "INSERT INTO orders (customer_id, description, total_cost, paid)
+            VALUES (:customer_id, :description, :total_cost, :paid)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
         ':customer_id' => intval($customer_id),
         ':description' => $description,
         ':total_cost' => $total_cost,
-        ':paid' => $paid,
-        ':not_paid' => $total_cost - $paid
+        ':paid' => $paid
+
     ));
     // Перенаправляем пользователя на страницу со списком заказов
     header('Location: index.php');

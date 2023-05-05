@@ -45,7 +45,7 @@ $orders = $stmtOrder->fetchAll(PDO::FETCH_ASSOC);
             <td><?=$order['description'] ?></td>
             <td><?=$order['total_cost'] ?></td>
             <td><?=$order['paid'] ?></td>
-            <td><?=$order['not_paid'] ?></td>
+            <td><?= round($order['total_cost'] - $order['paid'])   ?></td>
             <td>
                 <form method="get">
                     <a href='customer.php?customer_id=<?=$order['customer_id']?>'>
