@@ -61,7 +61,7 @@ $orders = $stmtOrder->fetchAll(PDO::FETCH_ASSOC);
 </table>
 <table>
 
-    <tr> <th>Описание</th><th>Общая стоимость</th><th>Описание</th><th>Не оплачено</th></tr>
+    <tr> <th>Описание</th><th>Общая стоимость</th><th>Оплачено</th><th>Не оплачено</th></tr>
     <?php
     foreach ($orders as $order): ?>
         <tr>
