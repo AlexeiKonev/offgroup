@@ -11,19 +11,7 @@ $password = "root";
 $db = new DataBase($host,$db_name,$username,$password);
 $pdo = $db->getPdo();
 
-//try {
-//    $pdo = new PDO("mysql:host=" . $host . ";dbname=" . $db_name, $username, $password);
-////    $pdo = new PDO("mysql:host=".$host.";dbname=".$dbname, $username, $password);
-//} catch (PDOException $e) {
-//    die("Ошибка подключения к базе данных: " . $e->getMessage());
-//}
-
-
-
 $id = $_GET['id'];
-
-
-
 
 
 // Получение данных из таблицы orders
@@ -33,8 +21,6 @@ $orders = $stmtOrder->fetchAll(PDO::FETCH_ASSOC);
 
 
 ?>
-
-
 
 <!doctype html>
 <html lang="en">
@@ -50,16 +36,17 @@ $orders = $stmtOrder->fetchAll(PDO::FETCH_ASSOC);
 
 </table>
 <table>
-    <tr><th>ID</th><th>Покупатель</th><th>Описание</th><th>Общая стоимость</th><th>Оплачено</th><th>Действия</th></tr>
+    <tr><th>ID Покупателя </th><th>Описание</th><th>Общая стоимость</th><th>Оплачено</th><th>Не оплачено</th><th></th></tr>
     <?php
     foreach ($orders as $order): ?>
         <tr>
-            <td><?=$order['id']?></td>
+
             <td><?=$order['customer_id'] ?></td>
-            <td><?=$order['customer'] ?></td>
+
             <td><?=$order['description'] ?></td>
             <td><?=$order['total_cost'] ?></td>
             <td><?=$order['paid'] ?></td>
+            <td><?=$order['not_paid'] ?></td>
             <td>
                 <form method="get">
                     <a href='customer.php?customer_id=<?=$order['customer_id']?>'>
@@ -72,5 +59,6 @@ $orders = $stmtOrder->fetchAll(PDO::FETCH_ASSOC);
         </tr>
     <?php endforeach; ?>
 </table>
+<a href='index.php'>вернуться на главную</a>
 </body>
 </html>

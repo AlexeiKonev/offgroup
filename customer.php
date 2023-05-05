@@ -46,7 +46,7 @@ $sql = "SELECT * FROM customers WHERE customer_id = " . $customer_id;
 </head>
 <body>
 <table>
-    <tr><th>ID</th><th>Имя</th><th>Контакты</th></tr>
+    <tr><th>ID</th><th>ID покупателя</th><th>Имя</th><th>Контакты</th></tr>
     <?php
     foreach ($customers as $customer): ?>
         <tr>
@@ -60,28 +60,23 @@ $sql = "SELECT * FROM customers WHERE customer_id = " . $customer_id;
     <?php endforeach; ?>
 </table>
 <table>
-    <tr><th>ID</th><th>Покупатель</th><th>Описание</th><th>Общая стоимость</th><th>Оплачено</th><th>Действия</th></tr>
+
+    <tr> <th>Описание</th><th>Общая стоимость</th><th>Описание</th><th>Не оплачено</th></tr>
     <?php
     foreach ($orders as $order): ?>
         <tr>
-            <td><?=$order['id']?></td>
-            <td><?=$order['customer_id'] ?></td>
-            <td><?=$order['customer'] ?></td>
+
+
+
             <td><?=$order['description'] ?></td>
             <td><?=$order['total_cost'] ?></td>
             <td><?=$order['paid'] ?></td>
             <td><?=$order['not_paid'] ?></td>
-            <td>
-                <form method="get">
-                    <a href='customer.php?customer_id=<?=$order['customer_id']?>'>
 
-                        Просмотреть покупателя
-                    </a>
-                </form>
-            </td>
 
         </tr>
     <?php endforeach; ?>
 </table>
+<a href='index.php'>вернуться на главную</a>
 </body>
 </html>

@@ -10,16 +10,6 @@ $password = "root";
 $db = new DataBase($host,$db_name,$username,$password);
 $pdo = $db->getPdo();
 
-//try {
-//
-//    $pdo = new PDO("mysql:host=" . $host . ";dbname=" . $db_name, $username, $password);
-//
-//} catch (PDOException $e) {
-//    die("Ошибка подключения к базе данных: " . $e->getMessage());
-//}
-
-
-
 
 // Получение данных из таблицы orders
 $sql = "SELECT * FROM orders";
@@ -66,9 +56,9 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </form>
 <table>
     <tr>
-        <th>ID</th>
-        <th>ID</th>
-        <th>Покупатель</th>
+
+        <th>ID Покупателя</th>
+
         <th>Описание</th>
         <th>Общая стоимость</th>
         <th>Оплачено</th>
@@ -78,9 +68,9 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php
     foreach ($orders as $order): ?>
         <tr>
-            <td><?= $order['id'] ?></td>
+
             <td><?= $order['customer_id'] ?></td>
-            <td><?= $order['customer'] ?></td>
+
             <td><?= $order['description'] ?></td>
             <td><?= $order['total_cost'] ?></td>
             <td><?= $order['paid'] ?></td>
