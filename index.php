@@ -1,5 +1,5 @@
 <?php
-
+//получаем доступ к классу DataBase
 require_once 'DataBase.php';
 
 $host = "localhost";
@@ -12,12 +12,13 @@ $pdo = $db->getPdo();
 
 
 // Получение данных из таблицы orders
-$sql = "SELECT * FROM orders";
-$stmt = $pdo->query($sql);
-$orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$sqlOrder = "SELECT * FROM orders";
+$stmtOrder = $pdo->query($sqlOrder);
+$orders = $stmtOrder->fetchAll(PDO::FETCH_ASSOC);
 
 
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -39,7 +40,7 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <option value="2">2</option>
 
 </select>
-<label for="descriptionID">description</label>
+<label for="descriptionID">описание</label>
 <select id="descriptionID" name="description">
 
     <option value="iphoneX">iphoneX</option>
@@ -58,7 +59,6 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <tr>
 
         <th>ID Покупателя</th>
-
         <th>Описание</th>
         <th>Общая стоимость</th>
         <th>Оплачено</th>

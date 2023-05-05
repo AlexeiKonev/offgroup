@@ -1,4 +1,5 @@
 <?php
+//получаем доступ к классу DataBase
 require_once 'DataBase.php';
 
 $host = "localhost";
@@ -30,7 +31,7 @@ $orders = $stmtOrder->fetchAll(PDO::FETCH_ASSOC);
 
 
 // Формируем SQL-запрос для выборки данных из таблицы customers
-$sql = "SELECT * FROM customers WHERE customer_id = " . $customer_id;
+//$sql = "SELECT * FROM customers WHERE customer_id = " . $customer_id;
 
 
 ?>
@@ -55,7 +56,6 @@ $sql = "SELECT * FROM customers WHERE customer_id = " . $customer_id;
             <td><?=$customer['name'] ?></td>
             <td><?=$customer['email'] ?></td>
 
-
         </tr>
     <?php endforeach; ?>
 </table>
@@ -66,13 +66,10 @@ $sql = "SELECT * FROM customers WHERE customer_id = " . $customer_id;
     foreach ($orders as $order): ?>
         <tr>
 
-
-
             <td><?=$order['description'] ?></td>
             <td><?=$order['total_cost'] ?></td>
             <td><?=$order['paid'] ?></td>
             <td><?=$order['not_paid'] ?></td>
-
 
         </tr>
     <?php endforeach; ?>

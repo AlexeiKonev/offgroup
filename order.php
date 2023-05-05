@@ -1,5 +1,5 @@
 <?php
-//require_once "./ordertable_row.php";
+//получаем доступ к классу DataBase
 require_once 'DataBase.php';
 
 
@@ -11,15 +11,14 @@ $password = "root";
 $db = new DataBase($host,$db_name,$username,$password);
 $pdo = $db->getPdo();
 
+// id заказа соответствует инкрементированому id таблицы orders
 $id = $_GET['id'];
 
 
 // Получение данных из таблицы orders
-$sqlOrder = "SELECT * FROM orders WHERE id =".$id;;
+$sqlOrder = "SELECT * FROM orders WHERE id =".$id;
 $stmtOrder = $pdo->query($sqlOrder);
 $orders = $stmtOrder->fetchAll(PDO::FETCH_ASSOC);
-
-
 ?>
 
 <!doctype html>
